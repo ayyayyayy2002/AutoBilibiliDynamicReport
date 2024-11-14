@@ -112,14 +112,14 @@ for uid in uids:
                     response = requests.post(report_url, params=params,headers=headers,json=json_data, timeout=(5, 10))
                     reportcount=reportcount+1
                     print(f"{uid},{response.text},{reportcount}")
-                    if reportcount % 30 == 10:
+                    if reportcount % 10 == 1:
                         with open(log_file, "a", encoding='utf-8') as file:
                             file.write(f"\n{uid},{response.text},{reportcount}")
                 except requests.exceptions.RequestException as e:
                     print(e)
 
 
-            if not offset:
+            if not offset or reportcount > 30:
                 break
 
     except requests.exceptions.RequestException as e:

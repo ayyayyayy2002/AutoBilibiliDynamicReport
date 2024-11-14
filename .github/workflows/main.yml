@@ -1,8 +1,8 @@
-name: 全自动签到
+name: 全自动举报动态
 
 on:
   schedule:
-    # 每天北京时间（UTC+8）凌晨1点触发
+    # 每天北京时间（UTC+8）下午5点触发
     - cron: '0 9 * * *' # UTC时间，1 AM 北京时间是 5 PM UTC 前一天
   workflow_dispatch: # 手动触发
 
@@ -35,7 +35,7 @@ jobs:
           pip install -r requirements.txt  # 如果有需求文件
           
 
-      - name: 签到脚本
+      - name: 开始举报
         env:
 #          CHROME: ${{ steps.setup-chrome.outputs.chrome-path }}  # 设置 Chrome 路径为环境变量
 #          DRIVER: ${{ steps.setup-chrome.outputs.chromedriver-path }}  # 设置 Chrome 路径为环境变量

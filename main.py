@@ -28,7 +28,7 @@ COOKIE = os.environ.get('COOKIE')
 
 
 
-
+whitelist_url= 'https://github.com/ayyayyayy2002/BilibiliAutoReport/blob/main/%E4%BA%91%E7%AB%AF%E6%96%87%E4%BB%B6/whitelist.txt'
 log_file = f"{(datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d %H-%M-%S')}.txt"
 keyword_file = 'keywords.txt'
 uid_file = 'uid.txt'
@@ -68,7 +68,7 @@ for keyword in keywords:
             soup = BeautifulSoup(response.text, 'html.parser')
             count = 0  # 计数器，用于限制获取的UID数量
             for link in soup.select('.bili-video-card .bili-video-card__info--owner'):
-                if count >= 10:
+                if count >= 1:
                     break
                 href = link['href']
                 uid = href.split('/')[-1]
@@ -78,6 +78,18 @@ for keyword in keywords:
         except requests.exceptions.RequestException as e:
             print(f"关键词 \"{keyword}\" 搜索页面请求失败：", e)
 #print(uids)
+try:
+    response = requests.get(whitelist_url)
+
+    for line in response.text.split('\n'):
+        uid = line.strip()
+        if uid:  # 确保 uid 不为空
+            uids.add(uid)
+
+except Exception as e:
+    print(e)
+
+
 for uid in uids:
     offset=''
     reportcount=0
@@ -107,7 +119,7 @@ for uid in uids:
                         'accused_uid': int(uid),
                         'dynamic_id': dyid,
                         'reason_type': 0,
-                        'reason_desc': 'uishbkldfhbkdsnb zcklvb',
+                        'reason_desc': '侮辱国家领导人，宣扬台独反华内容。审核结果：下架此视频并永久封禁该账号',
                     }
                     response = requests.post(report_url, params=params,headers=headers,json=json_data, timeout=(5, 10))
                     reportcount=reportcount+1
@@ -119,7 +131,7 @@ for uid in uids:
                     print(e)
 
 
-            if not offset or reportcount > 30:
+            if  offset == '' or reportcount > 30:
                 break
 
     except requests.exceptions.RequestException as e:

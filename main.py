@@ -6,17 +6,14 @@ import json
 import os
 import re
 
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
-COOKIE = "buvid3=58969B5F-F8F5-EA97-7529-A2B79CFAB41958435infoc; b_nut=1725341558; _uuid=EA69105105-91038-65109-D6A7-9D761052FCBD159128infoc; buvid4=12BB76DE-76B6-9A64-1007-D8A1A1AF9B0C59065-024090305-UYUGNkqyRoU%2BT8NfnBkvwQ%3D%3D; rpdid=|(JYl~~|lRm)0J'u~klJRkYJJ; header_theme_version=CLOSE; enable_web_push=DISABLE; PVID=1; LIVE_BUVID=AUTO8617289603999361; CURRENT_FNVAL=4048; buvid_fp_plain=undefined; bp_t_offset_3494374224694043=988808970275651584; hit-dyn-v2=1; bp_t_offset_3546780807465288=989567616118947840; is-2022-channel=1; fingerprint=406b36dce4312d13996f5de36c9df3a6; bp_t_offset_3546632549305041=993240277013495808; bp_t_offset_3493274255887316=993242317122961408; DedeUserID=3546744296049110; DedeUserID__ckMd5=42fcfe05851ba49a; buvid_fp=406b36dce4312d13996f5de36c9df3a6; bili_ticket=eyJhbGciOiJIUzI1NiIsImtpZCI6InMwMyIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE4MjA0MzEsImlhdCI6MTczMTU2MTE3MSwicGx0IjotMX0.skDEntE5EtSInlFzP6nZfq76rwrdWloAOPB9DdrN9xo; bili_ticket_expires=1731820371; home_feed_column=4; bp_t_offset_3546744296049110=999539001171902464; b_lsid=21010DEB109_193292A0F57; browser_resolution=1224-1094; SESSDATA=8ff7d8ba%2C1747117755%2Ceb26c%2Ab1CjB0iEGNUCwHz2nHimj0l09xGQUPH9ZhU9ASEIMuLVyHKKR8jLG4bvNobibQ_6r8aqISVmR1aHI2TU5UVmZUV2ZGaVNpSkJGTTRIX2ZTUzFOZUdpdmtmVHhLU0FwRzFqb1lCT1R5VVZ1OHFrYXV0VUZzdWo5MWkycUFUU3E0NC1IalNoMGpZVmdBIIEC; bili_jct=613df1ed5e8ad47c9305199190d83d12; sid=q1h5ummn; x-bili-gaia-vtoken=53b304ae17df4a3aa2b3d510f9964063"
-os.environ['COOKIE'] = COOKIE
-os.environ['UA'] = UA
+
 
 
 
 BOTTOKEN = os.environ.get('BOTTOKEN')
 USERID = os.environ.get('USERID')
-#UA = os.environ.get('UA')
-#COOKIE = os.environ.get('COOKIE')
+UA = os.environ.get('UA')
+COOKIE = os.environ.get('COOKIE')
 
 
 

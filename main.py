@@ -100,13 +100,16 @@ for uid in uids:
             headers = {'User-Agent': UA,'cookie':COOKIE}
             response = requests.get(get_dy_url, headers=headers, timeout=(5, 10))
             #print(response.text)
-            data = json.loads(response.text)
-            #print(response.text)
-            for item in data['data']['items']:
-                dyids.add(item['id_str'])
-            for item in data :
-                offset = data['data']['offset']
-            print('uid:',uid,'offset:',offset)
+            try:
+                data = json.loads(response.text)
+                # print(response.text)
+                for item in data['data']['items']:
+                    dyids.add(item['id_str'])
+                for item in data:
+                    offset = data['data']['offset']
+                print('uid:', uid, 'offset:', offset)
+            except Exception as e:
+                print(e)
 
             for dyid in dyids:
 

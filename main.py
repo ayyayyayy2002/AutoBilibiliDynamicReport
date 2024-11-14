@@ -26,9 +26,6 @@ COOKIE = os.environ.get('COOKIE')
 
 
 
-
-
-whitelist_url= 'https://github.com/ayyayyayy2002/BilibiliAutoReport/blob/main/%E4%BA%91%E7%AB%AF%E6%96%87%E4%BB%B6/whitelist.txt'
 log_file = f"{(datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d %H-%M-%S')}.txt"
 keyword_file = 'keywords.txt'
 uid_file = 'uid.txt'
@@ -68,7 +65,7 @@ for keyword in keywords:
             soup = BeautifulSoup(response.text, 'html.parser')
             count = 0  # 计数器，用于限制获取的UID数量
             for link in soup.select('.bili-video-card .bili-video-card__info--owner'):
-                if count >= 1:
+                if count >= 5:
                     break
                 href = link['href']
                 uid = href.split('/')[-1]
@@ -78,16 +75,6 @@ for keyword in keywords:
         except requests.exceptions.RequestException as e:
             print(f"关键词 \"{keyword}\" 搜索页面请求失败：", e)
 #print(uids)
-try:
-    response = requests.get(whitelist_url)
-
-    for line in response.text.split('\n'):
-        uid = line.strip()
-        if uid:  # 确保 uid 不为空
-            uids.add(uid)
-
-except Exception as e:
-    print(e)
 
 
 for uid in uids:
